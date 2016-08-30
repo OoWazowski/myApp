@@ -2,103 +2,118 @@
 
 namespace app\models;
 
-class User extends \yii\base\Object implements \yii\web\IdentityInterface
-{
-    public $id;
-    public $username;
-    public $password;
-    public $authKey;
-    public $accessToken;
+use Yii;
+// เรียกใช้งาน Method ActiveRecodrd& IdentityInterface ให้เขียนเพิ่ม
+use yii\db\ActiveRecord;
+use yii\web\IdentityInterface;
 
-    private static $users = [
-        '100' => [
-            'id' => '100',
-            'username' => 'admin',
-            'password' => 'admin',
-            'authKey' => 'test100key',
-            'accessToken' => '100-token',
-        ],
-        '101' => [
-            'id' => '101',
-            'username' => 'demo',
-            'password' => 'demo',
-            'authKey' => 'test101key',
-            'accessToken' => '101-token',
-        ],
-    ];
+// ***** จบ *****
 
-
+/**
+ * This is the model class for table "user".
+ *
+ * @property integer $id
+ * @property string $username
+ * @property string $auth_key
+ * @property string $password_hash
+ * @property string $password_reset_token
+ * @property string $email
+ * @property string $role
+ * @property string $status
+ * @property string $created_at
+ * @property string $updated_at
+ */
+class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface {
+    
+//  *****  เพิ่มสิทธิ การเข้าใช้งานโดยเขียนเพิ่มดังนี้  *****
+    const STATUS_NOTACTIVE = 0;
+    const STATUS_ACTIVE = 1;
+    
+    const ROLE_USER = 1;
+    const ROLE_MANAGER = 5;
+    const ROLE_ADMIN = 10;
+//      ******จบ******
+    
     /**
      * @inheritdoc
      */
-    public static function findIdentity($id)
-    {
-        return isset(self::$users[$id]) ? new static(self::$users[$id]) : null;
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public static function findIdentityByAccessToken($token, $type = null)
-    {
-        foreach (self::$users as $user) {
-            if ($user['accessToken'] === $token) {
-                return new static($user);
-            }
-        }
-
-        return null;
-    }
-
-    /**
-     * Finds user by username
-     *
-     * @param string $username
-     * @return static|null
-     */
-    public static function findByUsername($username)
-    {
-        foreach (self::$users as $user) {
-            if (strcasecmp($user['username'], $username) === 0) {
-                return new static($user);
-            }
-        }
-
-        return null;
+    public static function tableName() {
+        return 'user';
     }
 
     /**
      * @inheritdoc
      */
-    public function getId()
-    {
-        return $this->id;
+    public function rules() {
+        return [
+//            ***** เขียนเพิ่ม *****
+            ['status','default','value'=>  self::STATUS_ACTIVE],
+            ['status','in','range'=>[
+            self::STATUS_ACTIVE, self::STATUS_NOTACTIVE 
+            ]],
+            ['role','defult','value'=>  self::ROLE_USER],
+            ['role','in','range'=>[
+            self::ROLE_USER,  self::ROLE_MANAGER, self::ROLE_ADMIN
+            ]],
+//            ***** จบ *****
+            [['username', 'auth_key', 'password_hash', 'email', 'role', 'status'], 'required'],
+            [['created_at', 'updated_at'], 'safe'],
+            [['username', 'password_hash', 'password_reset_token', 'email', 'role'], 'string', 'max' => 255],
+            [['auth_key'], 'string', 'max' => 32],
+            [['status'], 'string', 'max' => 10],
+            [['username'], 'unique'],
+            [['email'], 'unique'],
+        ];
     }
 
     /**
      * @inheritdoc
      */
-    public function getAuthKey()
-    {
-        return $this->authKey;
+    public function attributeLabels() {
+        return [
+            'id' => 'ID',
+            'username' => 'ชื่อผู้ใช้',
+            'auth_key' => 'Auth Key',
+            'password_hash' => 'รหัสผ่าน',
+            'password_reset_token' => 'Password Reset Token',
+            'email' => 'อีเมล์',
+            'role' => 'สิทธิ์',
+            'status' => 'สถานะ',
+            'created_at' => 'สร้างวันที่',
+            'updated_at' => 'แก้ไขวันที่',
+        ];
+    }
+// ***** สร้าง function ขี้นมา ******
+    public static function findByUsername($username){
+        return static::findOne(['username'=>$username,'status'=>  self::STATUS_ACTIVE]);
+    }
+    
+    public function validatePassword($password){
+        return Yii::$app->security->validatePassword($password, $this->password_hash);
+    }
+// *****  จบ  *****
+    public function getAuthKey() {
+        
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function validateAuthKey($authKey)
-    {
-        return $this->authKey === $authKey;
+    public function getId() {
+// เขียนเพิ่ม
+        return $this->getPrimaryKey();
+        
     }
 
-    /**
-     * Validates password
-     *
-     * @param string $password password to validate
-     * @return boolean if password provided is valid for current user
-     */
-    public function validatePassword($password)
-    {
-        return $this->password === $password;
+    public function validateAuthKey($authKey) {
+        
     }
+
+    public static function findIdentity($id) {
+//        **** เขียนเพิ่ม  ใช้ในการเช็คค่าสิทธิ์ว่าสถานะเป็นอะไร*****
+        return static::findOne(['id'=>$id, 'status'=>  self::STATUS_ACTIVE]);
+        
+    }
+
+    public static function findIdentityByAccessToken($token, $type = null) {
+        
+    }
+
 }
