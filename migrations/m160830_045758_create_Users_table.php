@@ -14,15 +14,6 @@ class m160830_045758_create_Users_table extends Migration
     {
         $this->createTable('users', [
             'id' => $this->primaryKey(),
-            'username' => $this->string()->notNull(),
-            'auth_key' => $this->string(32)->notNull(),
-            'password_hash' => $this->string()->notNull(),
-            'password_reset_token' => $this->string(),
-            'email' => $this->string()->notNull(),
-            'firstname' => $this->string()->notNull(),
-            'status' => $this->string(10)->notNull(),
-            'created_at' => $this->dateTime(),
-            'updated_at' => $this->dateTime(),
         ]);
     }
 
