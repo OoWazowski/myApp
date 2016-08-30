@@ -6,6 +6,7 @@ use Yii;
 // เรียกใช้งาน Method ActiveRecodrd& IdentityInterface ให้เขียนเพิ่ม
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
+use app\models\User;
 
 // ***** จบ *****
 
@@ -47,14 +48,14 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface {
     public function rules() {
         return [
 //            ***** เขียนเพิ่ม *****
-            ['status','default','value'=>  self::STATUS_ACTIVE],
-            ['status','in','range'=>[
-            self::STATUS_ACTIVE, self::STATUS_NOTACTIVE 
-            ]],
-            ['role','defult','value'=>  self::ROLE_USER],
-            ['role','in','range'=>[
-            self::ROLE_USER,  self::ROLE_MANAGER, self::ROLE_ADMIN
-            ]],
+//            ['status','default','value'=>  self::STATUS_ACTIVE],
+//            ['status','in','range'=>[
+//            self::STATUS_ACTIVE, self::STATUS_NOTACTIVE 
+//            ]],
+//            ['role','defult','value'=>  self::ROLE_USER],
+//            ['role','in','range'=>[
+//            self::ROLE_USER,  self::ROLE_MANAGER, self::ROLE_ADMIN
+//            ]],
 //            ***** จบ *****
             [['username', 'auth_key', 'password_hash', 'email', 'role', 'status'], 'required'],
             [['created_at', 'updated_at'], 'safe'],
