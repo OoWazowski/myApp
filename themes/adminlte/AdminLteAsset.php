@@ -13,6 +13,8 @@ use yii\web\AssetBundle;
 class AdminLteAsset extends AssetBundle {
 
     public $sourcePath = '@vendor/almasaeed2010/adminlte';
+    public $basePath = '@webroot';
+    public $baseUrl = '@web';
 //    public $toPath = '@vendor/almasaeed2010/adminlte';
 //    public $baseUrl = '@vendor/almasaeed2010/adminlte';
     public $css = [

@@ -17,6 +17,7 @@ class AdminLteAsset extends AssetBundle
 {
     public $basePath = '@webroot';
     public $baseUrl = '@web';
+    public $bashTo = '@vendor';
     public $css = [
         'themes/AdminLTE/bootstrap/css/bootstrap.min.css',
         'themes/AdminLTE/dist/css/AdminLTE.css',
