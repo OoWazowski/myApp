@@ -4,7 +4,7 @@ $params = require(__DIR__ . '/params.php');
 
 $config = [
     'id' => 'basic',
-    'name' => 'iNew CRM',
+    'name' => 'i@m App',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'components' => [

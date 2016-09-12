@@ -10,7 +10,7 @@ use app\assets\AdminLteAsset;
 
 <header class="main-header">
 
-    <?= Html::a('<span class="logo-mini">CRM</span><span class="logo-lg">' . Yii::$app->name . '</span>', Yii::$app->homeUrl, ['class' => 'logo']) ?>
+    <?= Html::a('<span class="logo-mini">i@m</span><span class="logo-lg">' . Yii::$app->name . '</span>', Yii::$app->homeUrl, ['class' => 'logo']) ?>
 
     <nav class="navbar navbar-static-top">
         <!-- Sidebar toggle button-->
