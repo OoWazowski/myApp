@@ -19,8 +19,18 @@
                             'icon' => 'fa fa-gears',
                             'url' => '#',
                             'items' => [
+                                ['label' => 'Roles', 'icon' => 'fa fa-circle-o text-yellow', 'url' => ['/role/index'],],
+//                                ['label' => 'Roles', 'icon' => 'fa fa-circle-o text-yellow', 'url' => ['/user/search']],
+                            ],
+                        ],
+                        [
+                            'label' => 'Modules',
+                            'icon' => 'fa fa-navicon',
+                            'url' => '#',
+                            'items' => [
                                 ['label' => 'Users', 'icon' => 'fa fa-circle-o text-yellow', 'url' => ['/user/index'],],
-                                ['label' => 'Roles', 'icon' => 'fa fa-circle-o text-yellow', 'url' => ['/user/search']],
+                                ['label' => 'Customers', 'icon' => 'fa fa-circle-o text-aqua', 'url' => ['/customer/index'],],
+                                ['label' => 'Campaigns', 'icon' => 'fa fa-circle-o text-yellow', 'url' => ['/campaign/index'],],
                             ],
                         ],
                         [
