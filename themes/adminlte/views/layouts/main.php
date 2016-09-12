@@ -3,7 +3,6 @@
 use yii\helpers\Html;
 use app\assets\AppAsset;
 use app\assets\AdminLteAsset;
-//use app\assets\AdminLteAsset;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
@@ -40,7 +39,8 @@ if (Yii::$app->controller->action->id === 'login') {
             <title><?= Yii::$app->name ?></title>
             <?php $this->head() ?>
         </head>
-        <body class="hold-transition skin-red fixed sidebar-mini">
+        <!--<body class="hold-transition skin-red fixed sidebar-mini">-->
+        <body class="hold-transition skin-red sidebar-collapse sidebar-mini">
             <?php $this->beginBody() ?>
             <div class="wrapper">
 

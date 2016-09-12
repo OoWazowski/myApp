@@ -7,30 +7,30 @@
                     'options' => ['class' => 'sidebar-menu'],
                     'items' => [
                         [
-                            'label' => 'User Management',
-                            'icon' => 'fa fa-group',
-                            'url' => '#',
-                            'items' => [
-                                ['label' => 'User admin', 'icon' => 'fa fa-user', 'url' => ['/user/user/'],],
-                                ['label' => 'SIP Users', 'icon' => 'fa fa-phone-square', 'url' => ['/sipusers/sipusers/']],
-                            ],
-                        ],
-                        [
-                            'label' => 'Route',
+                            'label' => 'Dashboard',
                             'icon' => 'fa fa-retweet',
                             'url' => '#',
                             'items' => [
-                                ['label' => 'SIP Trunks', 'icon' => 'fa fa-hdd-o', 'url' => ['/siptrunks/siptrunks/'],],
+                                ['label' => 'Dashboard', 'icon' => 'fa fa-circle-o text-red', 'url' => ['/site/index/'],],
                             ],
                         ],
                         [
-                            'label' => 'Dialplan',
-                            'icon' => 'fa fa-refresh',
+                            'label' => 'Settings',
+                            'icon' => 'fa fa-gears',
                             'url' => '#',
                             'items' => [
-                                ['label' => 'Dialplan', 'icon' => 'fa fa-refresh', 'url' => ['/extension/extension'],],
-                                ['label' => 'Time Condition', 'icon' => 'fa fa-clock-o', 'url' => ['/'],],
-                                ['label' => 'Interactive Voice Recording', 'icon' => 'fa fa-sort-amount-asc', 'url' => ['/'],],
+                                ['label' => 'Users', 'icon' => 'fa fa-circle-o text-red', 'url' => ['/user/index'],],
+                                ['label' => 'Roles', 'icon' => 'fa fa-circle-o text-yellow', 'url' => ['']],
+                            ],
+                        ],
+                        [
+                            'label' => 'Calenda',
+                            'icon' => 'fa fa-calendar',
+                            'url' => '#',
+                            'items' => [
+                                ['label' => 'Calenda', 'icon' => 'fa fa-circle-o text-yellow', 'url' => ['/calenda/index'],],
+//                                ['label' => 'Time Condition', 'icon' => 'fa fa-clock-o', 'url' => ['/'],],
+//                                ['label' => 'Interactive Voice Recording', 'icon' => 'fa fa-sort-amount-asc', 'url' => ['/'],],
                             ],
                         ],
                         [
@@ -38,7 +38,7 @@
                             'icon' => 'fa fa-list-ol',
                             'url' => '#',
                             'items' => [
-                                ['label' => 'CDRs', 'icon' => 'fa fa-file-text-o', 'url' => ['/cdr/cdr/'],],
+                                ['label' => 'Report', 'icon' => 'fa fa-circle-o text-aqua', 'url' => ['/report/index/'],],
                             ],
                         ],
                         ['label' => 'Gii', 'icon' => 'fa fa-file-code-o', 'url' => ['/gii']],
