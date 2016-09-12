@@ -11,7 +11,7 @@
                             'icon' => 'fa fa-retweet',
                             'url' => '#',
                             'items' => [
-                                ['label' => 'Dashboard', 'icon' => 'fa fa-circle-o text-red', 'url' => ['/site/index/'],],
+                                ['label' => 'Dashboard', 'icon' => 'fa fa-circle-o text-yellow', 'url' => ['/site/index/'],],
                             ],
                         ],
                         [
@@ -19,8 +19,8 @@
                             'icon' => 'fa fa-gears',
                             'url' => '#',
                             'items' => [
-                                ['label' => 'Users', 'icon' => 'fa fa-circle-o text-red', 'url' => ['/user/index'],],
-                                ['label' => 'Roles', 'icon' => 'fa fa-circle-o text-yellow', 'url' => ['']],
+                                ['label' => 'Users', 'icon' => 'fa fa-circle-o text-yellow', 'url' => ['/user/index'],],
+                                ['label' => 'Roles', 'icon' => 'fa fa-circle-o text-yellow', 'url' => ['/user/search']],
                             ],
                         ],
                         [
